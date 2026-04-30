@@ -77,6 +77,46 @@ Ensure you have the following installed:
 4. **Open your browser:**
    Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
 
+## 🧪 Testing and Quality Assurance
+
+This repository places a strong emphasis on reliability and code quality, implementing a robust testing suite for the frontend application using **Jest** and **React Testing Library**.
+
+### 🎯 What We Test
+- **Component Rendering**: Ensuring all UI components render correctly under various states (loading, success, error).
+- **User Interactions**: Simulating user clicks, typing, and form submissions to verify the application's responsiveness.
+- **Input Validation**: Rigorously testing URL input fields across different platforms (YouTube, Facebook, etc.) to validate inputs and prevent invalid requests.
+- **State Management**: Verifying that error messages, loading spinners, and download buttons appear exactly when expected.
+- **Mocking**: Utilizing Jest's mocking capabilities to isolate components and avoid actual API calls during unit tests.
+
+### 🏃 Running the Tests
+
+You can run the test suite using any of the following commands:
+
+```bash
+# Run all tests
+npm test
+# or yarn test / pnpm test
+
+# Run tests in watch mode (recommended for development)
+npm run test:watch
+
+# Generate test coverage report
+npm run test:coverage
+```
+
+### 📁 Test Structure
+
+Tests are organized systematically to ensure high maintainability:
+
+```text
+gograbify/
+├── __tests__/              # Global and feature-specific test files
+│   └── youtube-downloader/ # Tests specific to the YouTube Downloader feature
+├── jest.config.js          # Next.js integrated Jest configuration
+└── jest.setup.ts           # Global test setups and DOM matchers (jest-dom)
+```
+
+
 ## 📂 Project Structure
 
 The project follows a feature-based architecture for better scalability and maintainability:
