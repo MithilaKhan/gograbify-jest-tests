@@ -5,36 +5,36 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Advertisement from "@/components/Advertisement";
 import { DownloadTable } from "@/components/DownloadTable";
-import { PlatformIcons } from "@/components/PlatformIcons"; 
+import { PlatformIcons } from "@/components/PlatformIcons";
 
 type info = {
-  title: string; 
+  title: string;
   subtitle: string;
-  description: string; 
+  description: string;
 }
 
-export const DownloadVideoSection = ({info}:{info:info}) => {
+export const DownloadVideoSection = ({ info }: { info: info }) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!url.trim()) {
       toast.error("Please enter a video URL");
       return;
     }
 
     const urlPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be|tiktok\.com|instagram\.com|facebook\.com|fb\.watch)/i;
-    
+
     if (!urlPattern.test(url)) {
       toast.error("Please enter a valid video URL from YouTube, TikTok, Instagram, or Facebook");
       return;
     }
 
     setIsLoading(true);
-    
+
     // Simulate processing
     setTimeout(() => {
       setIsLoading(false);
@@ -44,7 +44,7 @@ export const DownloadVideoSection = ({info}:{info:info}) => {
   };
 
   return (
-    <section className={`min-h-screen   flex flex-col items-center md:pt-10 pt-20 ${showOptions? "pb-10": "pb-0"}    relative overflow-hidden`}>
+    <section className={`min-h-screen   flex flex-col items-center md:pt-10 pt-20 ${showOptions ? "pb-10" : "pb-0"}    relative overflow-hidden`}>
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#21a178]/10 rounded-full blur-3xl animate-float" />
@@ -54,12 +54,12 @@ export const DownloadVideoSection = ({info}:{info:info}) => {
       <div className="relative z-10 max-w-4xl w-full text-center">
         {/* Title */}
         <h1 className="text-4xl md:text-6xl font-semibold md:mb-9 mb-5 leading-tight">
-         {info.title}
+          {info.title}
           <span className="block gradient-text glow-text">{info.subtitle}</span>
         </h1>
-        
+
         <p className=" text-muted-foreground md:text-lg text-sm  mb-6 max-w-xl mx-auto">
-        {info?.description}
+          {info?.description}
         </p>
 
         {/* Platform Icons */}
@@ -71,13 +71,14 @@ export const DownloadVideoSection = ({info}:{info:info}) => {
             <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
+                id="banner-input"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="Paste video URL here..."
                 className="flex-1 bg-transparent px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none text-sm"
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 disabled={isLoading}
                 className="btn-glow bg-primary text-primary-foreground font-semibold px-6 py-3 h-auto hover:bg-primary/90 disabled:opacity-50 cursor-pointer transition-all duration-300 text-white md:min-w-38 "
               >
@@ -92,9 +93,9 @@ export const DownloadVideoSection = ({info}:{info:info}) => {
               </Button>
             </div>
           </div>
-        </form> 
+        </form>
 
-        {/* Advertisement section  */} 
+        {/* Advertisement section  */}
         <Advertisement />
 
         {/* Download Options */}
